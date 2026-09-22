@@ -17,12 +17,12 @@ html[data-theme=dark]{color-scheme:dark;--bg:#091521;--panel:#142638;--ink:#f1f7
 <body>
 <header class="top"><div class="wrap head"><a class="logo" href="https://ciennexa.blogspot.com/">CIEN<span>NEXA</span> <small style="font-size:11px">LAB</small></a><button id="theme" class="theme" type="button">☾ Modo oscuro</button></div></header>
 <main class="wrap">
-<section class="hero"><div><small>LABORATORIO ACADÉMICO · ANÁLISIS LOCAL GRATUITO</small><h1>Síntesis de artículos científicos</h1><p>Primero, una síntesis general en un párrafo. Después, el objetivo, la metodología, los hallazgos con sus cifras relevantes y las conclusiones, utilizando el texto del Resumen/Abstract.</p></div><div class="orb" aria-hidden="true"></div></section>
+<section class="hero"><div><small>LABORATORIO ACADÉMICO · ANÁLISIS LOCAL GRATUITO</small><h1>Síntesis de artículos científicos</h1><p>Sube un artículo o pega su texto. Si tiene Resumen/Abstract, utilizaremos ese apartado; si no lo tiene, prepararemos una síntesis general del documento completo y después un desglose de sus contenidos.</p></div><div class="orb" aria-hidden="true"></div></section>
 <div class="cols">
-<section class="panel"><h2>1. Ingresa tu artículo</h2><p class="muted">Sube un PDF con texto seleccionable, un DOCX o pega el Resumen/Abstract. Archivos de hasta 15 MB.</p><div class="drop" id="drop"><label for="file">Selecciona o arrastra un archivo</label><input id="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><p class="muted" id="filename">Ningún archivo seleccionado</p></div><label for="source">O pega aquí el texto</label><textarea id="source" maxlength="2000000" placeholder="Pega el Resumen/Abstract completo, con su objetivo, métodos, resultados y conclusión..."></textarea><div class="actions"><button class="btn" id="analyze" type="button">Generar síntesis</button><button class="minor" id="clear" type="button">Limpiar</button></div><p role="status" aria-live="polite" id="status"></p></section>
-<section class="panel"><h2>2. ¿Qué hace esta versión?</h2><p class="note"><strong>Sin IA y sin pagos.</strong> Localiza el Resumen/Abstract y selecciona oraciones originales que describen el objetivo, el método, los hallazgos y la conclusión. Mantiene las cifras dentro de las oraciones que las explican: no hace una lista ni un recuento de estadísticas.</p><p class="muted">Es una <strong>síntesis extractiva</strong>, no una interpretación automática del estudio. Puede omitir datos o seleccionar frases inadecuadas: contrástala con el artículo. Si un PDF está escaneado, pega su resumen manualmente. El documento se procesa en tu navegador; las bibliotecas PDF y DOCX se cargan desde un servicio externo.</p></section>
+<section class="panel"><h2>1. Ingresa tu artículo</h2><p class="muted">Sube un PDF con texto seleccionable, un DOCX o pega un texto, con o sin apartado de Resumen/Abstract. Archivos de hasta 15 MB.</p><div class="drop" id="drop"><label for="file">Selecciona o arrastra un archivo</label><input id="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><p class="muted" id="filename">Ningún archivo seleccionado</p></div><label for="source">O pega aquí el texto</label><textarea id="source" maxlength="2000000" placeholder="Pega aquí el contenido de tu artículo, capítulo o documento, aunque no tenga un Resumen/Abstract..."></textarea><div class="actions"><button class="btn" id="analyze" type="button">Generar síntesis</button><button class="minor" id="clear" type="button">Limpiar</button></div><p role="status" aria-live="polite" id="status"></p></section>
+<section class="panel"><h2>2. ¿Qué hace esta versión?</h2><p class="note"><strong>Sin IA y sin pagos.</strong> Si el documento contiene Resumen/Abstract, utiliza ese apartado. Si no, busca oraciones relevantes a lo largo del documento, incluyendo sus secciones de objetivo, métodos, resultados y conclusión cuando las hay. Mantiene las cifras dentro de las frases que las explican, sin enumerarlas por separado.</p><p class="muted">Es una <strong>síntesis extractiva</strong>, no una interpretación automática del estudio. Si falta un apartado, el desglose lo indicará. Puede omitir datos o seleccionar frases inadecuadas: contrástala con el documento. Si un PDF está escaneado, pega su texto manualmente. El documento se procesa en tu navegador; las bibliotecas PDF y DOCX se cargan desde un servicio externo.</p></section>
 </div>
-<section id="results" class="panel results hidden" aria-live="polite"><div class="head"><h2>Resultado de CIENNEXA LAB</h2><div class="actions"><button class="minor" id="copy" type="button">Copiar síntesis</button><button class="minor" id="download" type="button">Descargar TXT</button></div></div><p id="sourceInfo" class="muted"></p><div class="general"><h3 style="margin:0;color:var(--accent)">1. Síntesis general · un solo párrafo</h3><p id="summary"></p></div><h3>2. Desglose académico</h3><div class="result-grid"><div class="result"><h3>Objetivo del estudio</h3><p id="objective"></p></div><div class="result"><h3>Metodología y participantes</h3><p id="methods"></p></div><div class="result"><h3>Hallazgos principales y cifras en contexto</h3><p id="findings"></p></div><div class="result"><h3>Conclusión expresada en el resumen</h3><p id="conclusions"></p></div></div><p class="note" style="margin-top:15px">Las frases provienen del texto suministrado. Si no aparece un dato, no se completa por suposición. Revisa las cifras, su interpretación y el contexto en el documento original.</p><details style="margin-top:17px"><summary>Ver el Resumen/Abstract identificado</summary><textarea id="abstract" readonly style="margin-top:10px;min-height:230px"></textarea></details><details style="margin-top:12px"><summary>Ver todo el texto extraído</summary><textarea id="full" readonly style="margin-top:10px;min-height:230px"></textarea></details></section>
+<section id="results" class="panel results hidden" aria-live="polite"><div class="head"><h2>Resultado de CIENNEXA LAB</h2><div class="actions"><button class="minor" id="copy" type="button">Copiar síntesis</button><button class="minor" id="download" type="button">Descargar TXT</button></div></div><p id="sourceInfo" class="muted"></p><div class="general"><h3 style="margin:0;color:var(--accent)">1. Síntesis general · un solo párrafo</h3><p id="summary"></p></div><h3>2. Desglose académico</h3><div class="result-grid"><div class="result"><h3>Objetivo del estudio</h3><p id="objective"></p></div><div class="result"><h3>Metodología y participantes</h3><p id="methods"></p></div><div class="result"><h3>Hallazgos principales y cifras en contexto</h3><p id="findings"></p></div><div class="result"><h3>Conclusión del documento</h3><p id="conclusions"></p></div></div><p class="note" style="margin-top:15px">Las frases seleccionadas provienen del texto suministrado. Si no aparece un dato, no se completa por suposición. Revisa las cifras, su interpretación y el contexto en el documento original.</p><details style="margin-top:17px"><summary>Ver texto utilizado para la síntesis</summary><textarea id="abstract" readonly style="margin-top:10px;min-height:230px"></textarea></details><details style="margin-top:12px"><summary>Ver todo el texto extraído o pegado</summary><textarea id="full" readonly style="margin-top:10px;min-height:230px"></textarea></details></section>
 </main>
 <script>
 (function(){'use strict';
@@ -33,72 +33,145 @@ function setTheme(t){document.documentElement.dataset.theme=t;$('theme').textCon
 try{setTheme(localStorage.getItem('ciennexa-lab-theme')==='dark'?'dark':'light')}catch(e){setTheme('light')}
 $('theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
 
-function clean(t){return t.replace(/\[P[aá]gina\s+\d+\]/gi,' ').replace(/\u00ad/g,'').replace(/\r/g,'').replace(/[ \t]+/g,' ').replace(/\n[ \t]*\n+/g,'\n').trim()}
-function sentenceList(t){const s=clean(t).replace(/\s*\n\s*/g,' ').replace(/\s+/g,' ');return s.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿(0-9])/u).map(x=>x.trim()).filter(x=>x.length>24)}
-function findAbstract(text){const t=clean(text), head=/\b(resumen|abstract)\b[ \t]*[:.\-–]?[ \t\n]*/gi;let m;
-  while((m=head.exec(t)) && m.index<50000){
-    const before=t.slice(Math.max(0,m.index-22),m.index);
-    if(/(?:\b(?:del|el|un|a|of|the)\s+)$/i.test(before))continue;
-    let body=t.slice(head.lastIndex);
-    const stop=/\b(?:palabras\s+clave|keywords|key\s+words|introducci[oó]n|introduction|referencias\s+bibliogr[aá]ficas)\b/gi;
-    const end=stop.exec(body);
-    if(end && end.index>120)body=body.slice(0,end.index);
-    body=body.slice(0,6500).trim();
-    if(body.length>=140)return {text:body,scope:'Resumen/Abstract identificado en el documento'};
+function clean(t){return t.replace(/\[P[aá]gina\s+\d+\]/gi,'\n').replace(/\u00ad/g,'').replace(/\r/g,'').replace(/[ \t]+/g,' ').replace(/\n[ \t]*\n+/g,'\n').trim()}
+function sentenceList(t){
+  const normalized=clean(t).replace(/\s*\n\s*/g,' ').replace(/\s+/g,' ');
+  return normalized.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿(0-9])/u).map(x=>x.trim()).filter(x=>x.length>=28&&x.length<=1000);
+}
+const headingKinds={
+  objective:/^(?:objetivos?|objective|objectives|aim|aims|purpose|prop[oó]sito|finalidad)$/i,
+  methods:/^(?:materiales\s+y\s+m[eé]todos|m[eé]todos?|metodolog[ií]a|dise[nñ]o\s+del\s+estudio|materials?\s+and\s+methods?|methods?|methodology|study\s+design)$/i,
+  findings:/^(?:resultados?|hallazgos|results?|findings)$/i,
+  conclusions:/^(?:conclusiones?|conclusions?|consideraciones\s+finales|discusi[oó]n\s+y\s+conclusiones|discussion\s+and\s+conclusions)$/i
+};
+function headingType(line){
+  const stripped=line.replace(/^\s*(?:(?:[IVX]+|\d+(?:\.\d+)*)(?:[.)])?\s+)?/i,'').trim().replace(/[:.\s]+$/,'');
+  if(!stripped||stripped.length>65)return '';
+  for(const [kind,re] of Object.entries(headingKinds))if(re.test(stripped))return kind;
+  if(/^(?:introducci[oó]n|introduction|discusi[oó]n|discussion|antecedentes|background)$/i.test(stripped))return 'other';
+  if(/^(?:referencias(?:\s+bibliogr[aá]ficas)?|bibliograf[ií]a|references|bibliography|ap[eé]ndices?|appendix|anexos?)$/i.test(stripped))return 'end';
+  return '';
+}
+function sectionMap(t){
+  const blocks={objective:[],methods:[],findings:[],conclusions:[]};
+  let current='other',bodyChars=0;
+  for(const line of t.split('\n')){
+    const a=line.trim();
+    if(!a)continue;
+    const heading=headingType(a);
+    if(heading){
+      if(heading==='end'&&bodyChars>1200)break;
+      current=heading;
+      continue;
+    }
+    // También reconoce encabezados de un resumen estructurado en la misma línea.
+    const inline=a.match(/^(?:\d+(?:\.\d+)*[.)]?\s*)?(objetivos?|objective|aim|purpose|materiales\s+y\s+m[eé]todos|m[eé]todos?|metodolog[ií]a|methods?|methodology|resultados?|results?|hallazgos|findings|conclusiones?|conclusions?)\s*:\s*(.{20,})$/i);
+    if(inline){const type=headingType(inline[1]);if(blocks[type]){current=type;blocks[type].push(inline[2]);bodyChars+=a.length;continue;}}
+    if(blocks[current] && blocks[current].join(' ').length<32000)blocks[current].push(a);
+    bodyChars+=a.length;
   }
-  if(t.length<=6500 && t.length>=140)return {text:t,scope:'Texto pegado o documento breve; verifica que corresponda al resumen'};
-  throw Error('No se pudo localizar un Resumen/Abstract claro. Pega directamente ese apartado en el cuadro de texto y vuelve a intentar.');
+  return Object.fromEntries(Object.entries(blocks).map(([key,lines])=>[key,lines.join(' ').trim()]));
 }
-const labelKinds={objetivo:'objective',objetivos:'objective',aim:'objective',purpose:'objective',objective:'objective',background:'objective',antecedentes:'objective',método:'methods',métodos:'methods',metodo:'methods',metodos:'methods',metodología:'methods',metodologia:'methods',method:'methods',methods:'methods',methodology:'methods','materiales y métodos':'methods','materiales y metodos':'methods',resultados:'findings',results:'findings',findings:'findings',hallazgos:'findings',conclusión:'conclusions',conclusion:'conclusions',conclusiones:'conclusions',conclusions:'conclusions'};
-function structured(text){const re=/\b(materiales\s+y\s+m[eé]todos|objetivos?|objective|aim|purpose|background|antecedentes|metodolog[ií]a|m[eé]todos?|methodology|methods?|resultados?|results?|findings|hallazgos|conclusi[oó]n(?:es)?|conclusions?)\s*:\s*/gi;let m,marks=[];
- while((m=re.exec(text))){marks.push({kind:labelKinds[m[1].toLowerCase().replace(/\s+/g,' ')],start:m.index,end:re.lastIndex});}
- const out={objective:'',methods:'',findings:'',conclusions:''};
- if(marks.length<2)return out;
- for(let i=0;i<marks.length;i++){const part=text.slice(marks[i].end,marks[i+1]?.start||text.length).trim().replace(/\s+/g,' ');if(marks[i].kind&&part)out[marks[i].kind]+=(out[marks[i].kind]?' ':'')+part;}
- return out;
+function findAbstract(text){
+  const t=clean(text),lines=t.split('\n');
+  let offset=0;
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i].trim();
+    // Evita confundir «el resumen» escrito dentro de otro párrafo con un encabezado.
+    const m=line.match(/^(?:\d+[.)]\s*)?(resumen|abstract)\s*(?::|[.\-–])?\s*(.*)$/i);
+    if(m && offset<90000 && (m[2].length<100 || /[:.\-–]/.test(line.slice(m[1].length,m[1].length+3)))){
+      const paragraphs=[];
+      if(m[2])paragraphs.push(m[2]);
+      let size=m[2].length;
+      for(let j=i+1;j<lines.length&&size<9500;j++){
+        const next=lines[j].trim();
+        if(/^(?:palabras\s+clave|palabras\s+claves|keywords?|key\s+words?|introducci[oó]n|introduction|resumen|abstract)\s*[:.\-–]?\s*$/i.test(next) && size>=90)break;
+        if(next.length<90 && headingType(next) && size>=130)break;
+        if(next){paragraphs.push(next);size+=next.length;}
+      }
+      const abstract=paragraphs.join(' ').trim();
+      if(abstract.length>=140){return {text:abstract.slice(0,9500),scope:'Resumen/Abstract identificado: síntesis de ese apartado',hasAbstract:true};}
+    }
+    offset+=lines[i].length+1;
+    if(offset>90000)break;
+  }
+  // No se detiene si falta el encabezado: siempre utiliza el texto disponible.
+  const references=t.search(/(?:^|\n)\s*(?:referencias(?:\s+bibliogr[aá]ficas)?|references|bibliograf[ií]a|bibliography)\s*\n/i);
+  const working=(references>1400?t.slice(0,references):t).trim();
+  return {text:working,scope:'No se encontró Resumen/Abstract: síntesis del documento completo',hasAbstract:false};
 }
-function score(s,kind){const a=s.toLowerCase();let n=0;
- const patterns={objective:/\b(objetiv|evalu|determin|analiz|investig|examin|prop[oó]sito|aim|purpose|objective|assess|investigat|evaluat)\w*/i,methods:/\b(estudio|diseñ|muestra|paciente|participante|cohorte|transversal|ensayo|encuest|reclut|study|sample|patient|participant|randomiz|cross.sectional|method)\w*/i,findings:/\b(result|hallaz|encontr|observ|asoci|compar|diferenc|increment|disminu|reducci|aument|mostr|evidenc|signific|mayor|menor|prevalen|frecuen|riesgo|associated|higher|lower|improv|decreas|increas)\w*/i,conclusions:/\b(conclu|sugier|indica|implica|recomienda|conclusion|suggest|support|implicat)\w*/i};
- if(patterns[kind].test(a))n+=5;
- if(kind==='objective' && /\b(conclu|sugier|conclusion|suggest)\w*/i.test(a))n-=6;
- if(kind==='findings'){
-  if(/\d+(?:[.,]\d+)?\s*%|\bp\s*[<=>]\s*0[.,]\d+|\b(?:or|rr|hr|ic|ci|β)\b|\d+(?:[.,]\d+)?/.test(a))n+=2;
-  if(/\b(mayor|menor|alta|baja|reduj|aument|asociaci[oó]n|diferencia|relaci[oó]n|higher|lower|association|difference)\b/.test(a))n+=2;
- }
- if(s.length>550)n-=2;
- return n;
+const patterns={
+  objective:/\b(objetiv|evalu|determin|analiz|investig|examin|prop[oó]sito|aim|purpose|objective|assess|investigat|evaluat)\w*/i,
+  methods:/\b(estudio|dise[nñ]|muestra|paciente|participante|cohorte|transversal|ensayo|encuest|reclut|instrumento|study|sample|patient|participant|randomiz|cross.sectional|method)\w*/i,
+  findings:/\b(result|hallaz|encontr|observ|asoci|compar|diferenc|increment|disminu|reducci|aument|mostr|evidenc|signific|mayor|menor|prevalen|frecuen|riesgo|associated|higher|lower|improv|decreas|increas)\w*/i,
+  conclusions:/\b(conclu|sugier|indica|implica|recomienda|conclusion|suggest|support|implicat|finalmente)\w*/i
+};
+function score(sentence,kind,position,total,fromSection){
+  let value=0;
+  if(patterns[kind].test(sentence))value+=7;
+  if(kind==='findings'){
+    if(/\d+(?:[.,]\d+)?\s*%|\bp\s*[<=>]\s*0[.,]\d+|\b(?:or|rr|hr|ic|ci|β)\b|\d+(?:[.,]\d+)?/.test(sentence))value+=1;
+    if(/\b(mayor|menor|alta|baja|reduj|aument|asociaci[oó]n|diferencia|relaci[oó]n|higher|lower|association|difference)\b/i.test(sentence))value+=2;
+  }
+  if(kind==='objective'&&/\b(conclu|sugier|conclusion|suggest)\w*/i.test(sentence))value-=5;
+  if(kind==='conclusions'&&/\b(estudio|muestra|participantes)\b/i.test(sentence)&&position<total*.25)value-=3;
+  if(/\b(doi:|https?:\/\/|isbn|issn|copyright|todos los derechos reservados|et al\.|www\.)/i.test(sentence))value-=9;
+  if(sentence.length<47 || sentence.length>520)value-=4;
+  if(fromSection)value+=5;
+  return value;
 }
-function pick(items,kind,count,excluded=new Set()){return items.map((text,i)=>({text,i,n:score(text,kind)})).filter(x=>x.n>=5&&!excluded.has(x.i)).sort((a,b)=>b.n-a.n||a.i-b.i).slice(0,count).sort((a,b)=>a.i-b.i)}
-function summarize(abstract){const all=sentenceList(abstract), parts=structured(abstract), used=new Set();
- const groups={};
- for(const key of ['objective','methods','findings','conclusions']){
-   const candidates=parts[key]?sentenceList(parts[key]).map((text,i)=>({text,i,n:score(text,key)})):[];
-   const limit=key==='findings'?3:1;
-   if(candidates.length){groups[key]=candidates.slice(0,limit).map(x=>x.text).join(' ');}
-   else{const picked=pick(all,key,limit,used);picked.forEach(x=>used.add(x.i));groups[key]=picked.map(x=>x.text).join(' ');}
- }
- // La síntesis general se forma exclusivamente con oraciones que aparecen en el resumen.
- const selected=[];
- for(const k of ['objective','methods','findings','conclusions']){
-   for(const s of sentenceList(groups[k]||''))if(!selected.some(x=>x.toLocaleLowerCase('es')===s.toLocaleLowerCase('es')))selected.push(s);
- }
- if(selected.length<2){for(const s of all.slice(0,5))if(!selected.includes(s))selected.push(s)}
- return {summary:selected.slice(0,6).join(' '),groups};
+function chooseFrom(items,kind,limit,used,threshold,fromSection){
+  return items.map((text,i)=>({text,i,s:score(text,kind,i,items.length,fromSection)}))
+    .filter(item=>item.s>=threshold&&!used.has(item.text.toLocaleLowerCase('es')))
+    .sort((a,b)=>b.s-a.s||a.i-b.i).slice(0,limit).sort((a,b)=>a.i-b.i).map(item=>item.text);
 }
-function render(t,name){const found=findAbstract(t),s=summarize(found.text),missing='No se distinguió con suficiente claridad en el Resumen/Abstract; consulta el artículo original.';
- $('summary').textContent=s.summary||missing;
- for(const key of ['objective','methods','findings','conclusions'])$(key).textContent=s.groups[key]||missing;
- $('abstract').value=found.text;$('full').value=t;$('sourceInfo').textContent='Origen: '+name+' · '+found.scope+' · Síntesis basada en oraciones originales (sin IA).';
- $('results').classList.remove('hidden');
- output='CIENNEXA LAB · SÍNTESIS EXTRACTIVA\nOrigen: '+name+'\n\nSÍNTESIS GENERAL\n'+$('summary').textContent+'\n\n'+[['OBJETIVO','objective'],['METODOLOGÍA Y PARTICIPANTES','methods'],['HALLAZGOS Y CIFRAS EN CONTEXTO','findings'],['CONCLUSIÓN','conclusions']].map(([h,k])=>h+'\n'+$(k).textContent).join('\n\n')+'\n\nVerifica todo en el texto original. No se realizó interpretación con IA.';
- status('Síntesis lista. Revisa si las frases seleccionadas representan fielmente el resumen original.');
+function summarize(found){
+  const all=sentenceList(found.text);
+  const sections=sectionMap(found.text);
+  const groups={objective:'',methods:'',findings:'',conclusions:''};
+  const chosen=[];
+  const used=new Set();
+  for(const key of ['objective','methods','findings','conclusions']){
+    const limit=key==='findings'?2:1;
+    let list=[];
+    const sectionSentences=sentenceList(sections[key]);
+    if(sectionSentences.length)list=chooseFrom(sectionSentences,key,limit,used,0,true);
+    if(list.length<limit){
+      const additional=chooseFrom(all,key,limit-list.length,used,found.hasAbstract?5:7,false);
+      list=list.concat(additional);
+    }
+    list.forEach(x=>used.add(x.toLocaleLowerCase('es')));
+    groups[key]=list.join(' ');
+    chosen.push(...list);
+  }
+  if(chosen.length<2){
+    // Respaldo para documentos narrativos sin objetivos/resultados rotulados.
+    const valid=all.filter(s=>!/(?:doi:|https?:\/\/|isbn|issn|copyright|et al\.)/i.test(s));
+    for(const s of [valid[0],valid[Math.floor(valid.length/2)],valid[valid.length-1],...valid]){
+      if(s&&!used.has(s.toLocaleLowerCase('es'))){chosen.push(s);used.add(s.toLocaleLowerCase('es'));}
+      if(chosen.length>=4)break;
+    }
+  }
+  // Un párrafo, preservando el texto original en vez de atribuirle conclusiones nuevas.
+  return {summary:chosen.slice(0,5).join(' '),groups};
+}
+function render(t,name){
+  const found=findAbstract(t),s=summarize(found);
+  const missing='No se identificó información suficiente para esta categoría; verifica el documento original.';
+  $('summary').textContent=s.summary||'No fue posible seleccionar oraciones completas del texto. Comprueba que el documento tenga texto legible.';
+  for(const key of ['objective','methods','findings','conclusions'])$(key).textContent=s.groups[key]||missing;
+  $('abstract').value=found.text;$('full').value=t;
+  $('sourceInfo').textContent='Origen: '+name+' · '+found.scope+' · Selección de oraciones originales, sin IA.';
+  $('results').classList.remove('hidden');
+  output='CIENNEXA LAB · SÍNTESIS EXTRACTIVA\nOrigen: '+name+'\nAlcance: '+found.scope+'\n\nSÍNTESIS GENERAL\n'+$('summary').textContent+'\n\n'+[['OBJETIVO','objective'],['METODOLOGÍA Y PARTICIPANTES','methods'],['HALLAZGOS Y CIFRAS EN CONTEXTO','findings'],['CONCLUSIÓN','conclusions']].map(([h,k])=>h+'\n'+$(k).textContent).join('\n\n')+'\n\nVerifica todo en el texto original. No se realizó interpretación con IA.';
+  status(found.hasAbstract?'Síntesis del Resumen/Abstract lista.':'No se encontró un Resumen/Abstract: se generó una síntesis a partir del texto del documento completo.');
 }
 async function extract(file){if(file.size>max)throw Error('El archivo supera los 15 MB.');const ext=file.name.split('.').pop().toLowerCase();
  if(ext==='pdf'){if(!window.pdfjsLib)throw Error('No se pudo cargar el lector PDF. Comprueba tu conexión.');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';const doc=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;if(doc.numPages>100)throw Error('Máximo 100 páginas por PDF.');const blocks=[];for(let p=1;p<=doc.numPages;p++){status('Leyendo PDF, página '+p+' de '+doc.numPages+'...');const page=await doc.getPage(p),content=await page.getTextContent();blocks.push('\n[Página '+p+']\n'+content.items.map(it=>it.str+(it.hasEOL?'\n':' ')).join(''));}return blocks.join('\n');}
  if(ext==='docx'){if(!window.mammoth)throw Error('No se pudo cargar el lector DOCX. Comprueba tu conexión.');const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});return result.value;}
  throw Error('Selecciona un archivo PDF o DOCX.');
 }
-$('analyze').onclick=async()=>{const file=$('file').files[0];$('results').classList.add('hidden');$('analyze').disabled=true;try{status('Preparando síntesis local...');const t=file?await extract(file):$('source').value;if(t.replace(/\s/g,'').length<100)throw Error('No se encontró texto suficiente. Si el PDF está escaneado, pega el resumen manualmente.');if(t.length>2000000)throw Error('El texto supera el máximo de dos millones de caracteres.');render(t,file?file.name:'Texto pegado');}catch(e){status('No se pudo generar la síntesis: '+e.message)}finally{$('analyze').disabled=false}};
+$('analyze').onclick=async()=>{const file=$('file').files[0];$('results').classList.add('hidden');$('analyze').disabled=true;try{status('Preparando síntesis local...');const t=file?await extract(file):$('source').value;if(t.replace(/\s/g,'').length<100)throw Error('No se encontró texto suficiente. Si el PDF está escaneado, pega su texto manualmente.');if(t.length>2000000)throw Error('El texto supera el máximo de dos millones de caracteres.');render(t,file?file.name:'Texto pegado');}catch(e){status('No se pudo generar la síntesis: '+e.message)}finally{$('analyze').disabled=false}};
 $('clear').onclick=()=>{$('file').value='';$('source').value='';$('filename').textContent='Ningún archivo seleccionado';$('results').classList.add('hidden');output='';status('')};
 $('file').onchange=()=>{$('filename').textContent=$('file').files[0]?.name||'Ningún archivo seleccionado';if($('file').files.length)status('Se analizará el archivo seleccionado. Quítalo para utilizar el texto pegado.')};
 const drop=$('drop');drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag')};drop.ondragleave=()=>drop.classList.remove('drag');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag');if(e.dataTransfer.files.length){$('file').files=e.dataTransfer.files;$('filename').textContent=$('file').files[0].name;status('Archivo preparado para analizar.')}};
